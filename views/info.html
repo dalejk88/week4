@@ -6,7 +6,29 @@
 </head>
 <body>
 
-<h1>Grrreetings!</h1>
-
+<h1>Grrreetings {{ @name }}!</h1>
+<h2>A list of fruits</h2>
+<ul>
+    <repeat group="{{ @fruitList }}" value="{{ @fruit }}">
+        <li>{{ @fruit }}</li>
+    </repeat>
+</ul>
+<p>Imploded string of fruits: {{ implode(", ", @fruitList) }}</p>
+<h2>Favorite games</h2>
+<ol>
+    <repeat group="{{ @gamesList }}" value="{{ @game }}">
+        <li>{{ @game }}</li>
+    </repeat>
+</ol>
+<h2>List of Students</h2>
+<ol start="{{ array_keys(@studentList)[0] }}">
+<repeat group="{{ @studentList }}" key="{{ @studentID }}" value="{{ @name }}">
+    <li>{{ @name }}</li>
+</repeat>
+</ol>
+<p>Is this Tien?</p>
+<check if="{{ array_values(@studentList)[0] == 'Tien' }}">
+    <p>Yaaay Tien!</p>
+</check>
 </body>
 </html>
